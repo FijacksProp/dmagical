@@ -144,9 +144,11 @@ p { color: var(--muted); }
 .page-hero h1 { margin-bottom: 1.25rem; color: var(--white); font-size: clamp(3.2rem, 6vw, 5.6rem); }
 .page-hero p { max-width: 670px; margin: 0; color: #d2dbe6; font-size: 1.12rem; }
 .split { display: grid; grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr); gap: clamp(3rem,8vw,7rem); align-items: center; }
+.split--feature { grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr); gap: clamp(2.5rem,6vw,5rem); }
 .split--reverse > :first-child { order: 2; }
 .media-frame { position: relative; }
 .media-frame img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.media-frame--landscape img { aspect-ratio: 3/2; object-position: center; }
 .media-frame::after { position: absolute; z-index: -1; right: -18px; bottom: -18px; width: 70%; height: 70%; border: 1px solid var(--gold); content: ""; }
 .statement { padding-left: 1.8rem; border-left: 2px solid var(--gold); color: var(--navy); font-family: Georgia,serif; font-size: clamp(1.35rem,2.2vw,2rem); }
 .metrics { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 2rem; border-top: 1px solid var(--line); }
