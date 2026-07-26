@@ -203,3 +203,130 @@ contactForm?.addEventListener("submit", async (event) => {
     submitButton.disabled = false;
   }
 });
+
+const partnershipOptions = {
+  "strategic-business": {
+    title: "Explore a strategic business partnership.",
+    description: "Tell us where your organization can create leverage through markets, distribution, technology, operations, or a joint venture."
+  },
+  investment: {
+    title: "Discuss an investment opportunity.",
+    description: "Share your investor profile, preferred venture area, indicative range, and investment horizon. This initial enquiry is not a financial commitment."
+  },
+  franchise: {
+    title: "Explore a franchise relationship.",
+    description: "Help us understand the venture, territory, operating experience, and level of readiness behind your interest."
+  },
+  "corporate-collaboration": {
+    title: "Propose a corporate collaboration.",
+    description: "Outline the commercial or programme opportunity, its intended scope, and when you would like delivery to begin."
+  },
+  technical: {
+    title: "Offer specialist or technical capability.",
+    description: "Describe the expertise, credentials, and delivery capacity your team could contribute to a D'Magical venture."
+  },
+  institutional: {
+    title: "Start an institutional partnership.",
+    description: "Tell us about the institution, programme focus, geographic scope, and current stage of the opportunity."
+  }
+} as const;
+
+type PartnershipType = keyof typeof partnershipOptions;
+
+const partnershipPanel = document.querySelector<HTMLElement>("[data-partnership-panel]");
+const partnershipForm = document.querySelector<HTMLFormElement>("[data-partnership-form]");
+const partnershipTypeInput = partnershipForm?.querySelector<HTMLInputElement>("[data-partnership-type]");
+const partnershipTitle = partnershipPanel?.querySelector<HTMLElement>("[data-partnership-title]");
+const partnershipDescription = partnershipPanel?.querySelector<HTMLElement>("[data-partnership-description]");
+const partnershipStatus = partnershipForm?.querySelector<HTMLElement>("[data-partnership-status]");
+const partnershipSubmit = partnershipForm?.querySelector<HTMLButtonElement>('button[type="submit"]');
+const partnershipButtons = document.querySelectorAll<HTMLButtonElement>("[data-partnership-open]");
+const partnershipFieldsets = partnershipForm?.querySelectorAll<HTMLFieldSetElement>("[data-partnership-fields]");
+let activePartnershipButton: HTMLButtonElement | null = null;
+
+function isPartnershipType(value: string): value is PartnershipType {
+  return Object.hasOwn(partnershipOptions, value);
+}
+
+function openPartnershipForm(type: PartnershipType): void {
+  if (!partnershipPanel || !partnershipForm || !partnershipTypeInput || !partnershipTitle || !partnershipDescription) return;
+
+  partnershipForm.reset();
+  partnershipTypeInput.value = type;
+  partnershipTitle.textContent = partnershipOptions[type].title;
+  partnershipDescription.textContent = partnershipOptions[type].description;
+
+  partnershipFieldsets?.forEach((fieldset) => {
+    const selected = fieldset.dataset.partnershipFields === type;
+    fieldset.hidden = !selected;
+    fieldset.disabled = !selected;
+  });
+
+  partnershipButtons.forEach((button) => {
+    const selected = button.dataset.partnershipOpen === type;
+    button.closest(".partnership-card")?.classList.toggle("is-selected", selected);
+    if (selected) activePartnershipButton = button;
+  });
+
+  if (partnershipStatus) {
+    partnershipStatus.hidden = true;
+    partnershipStatus.className = "form-status";
+    partnershipStatus.textContent = "";
+  }
+
+  partnershipPanel.hidden = false;
+  partnershipPanel.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+  partnershipTitle.focus({ preventScroll: true });
+}
+
+partnershipButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const type = button.dataset.partnershipOpen || "";
+    if (isPartnershipType(type)) openPartnershipForm(type);
+  });
+});
+
+document.querySelector<HTMLButtonElement>("[data-partnership-close]")?.addEventListener("click", () => {
+  if (!partnershipPanel) return;
+  partnershipPanel.hidden = true;
+  partnershipButtons.forEach((button) => button.closest(".partnership-card")?.classList.remove("is-selected"));
+  activePartnershipButton?.focus();
+});
+
+partnershipForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!partnershipForm.reportValidity() || !partnershipStatus || !partnershipSubmit || !partnershipTypeInput) return;
+
+  const formData = new FormData(partnershipForm);
+  const payload: Record<string, string | boolean> = Object.fromEntries(
+    [...formData.entries()].map(([key, value]) => [key, String(value)])
+  );
+  payload.consent = formData.get("consent") === "on";
+  partnershipStatus.hidden = false;
+  partnershipStatus.className = "form-status";
+  partnershipStatus.textContent = "Sending your partnership enquiry...";
+  partnershipSubmit.disabled = true;
+
+  try {
+    const response = await fetch("/api/partnership", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json() as ApiResponse;
+    partnershipStatus.classList.add(response.ok ? "is-success" : "is-error");
+    partnershipStatus.textContent = result.message;
+
+    if (response.ok) {
+      const submittedType = partnershipTypeInput.value;
+      partnershipForm.reset();
+      partnershipTypeInput.value = submittedType;
+      partnershipStatus.focus();
+    }
+  } catch {
+    partnershipStatus.classList.add("is-error");
+    partnershipStatus.textContent = "We could not connect to the website service. Please try again or call +232 76 431 194.";
+  } finally {
+    partnershipSubmit.disabled = false;
+  }
+});

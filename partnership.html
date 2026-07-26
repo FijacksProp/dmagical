@@ -25,14 +25,235 @@
     <section class="section section--cream">
       <div class="shell">
         <div class="section-heading"><div><span class="eyebrow">Ways to partner</span><h2>Different relationships for different opportunities.</h2></div><p>Every arrangement is assessed individually and documented around the specific venture, contribution, responsibilities, and risk.</p></div>
-        <div class="cards">
-          <article class="card" data-reveal><span class="card__number">01</span><h3>Strategic business partnerships</h3><p>Combine capabilities, distribution, market access, technology, or specialist operating knowledge.</p></article>
-          <article class="card" data-reveal><span class="card__number">02</span><h3>Investment partnerships</h3><p>Explore structured funding opportunities linked to an identified venture and agreed development plan.</p></article>
-          <article class="card" data-reveal><span class="card__number">03</span><h3>Franchise partnerships</h3><p>Work with repeatable venture models intended for carefully managed geographic or service expansion.</p></article>
-          <article class="card" data-reveal><span class="card__number">04</span><h3>Corporate collaboration</h3><p>Co-design initiatives, services, campaigns, or supply relationships that create mutual commercial value.</p></article>
-          <article class="card" data-reveal><span class="card__number">05</span><h3>Technical partnership</h3><p>Bring specialist knowledge, systems, accreditation, or delivery capacity into a developing venture.</p></article>
-          <article class="card" data-reveal><span class="card__number">06</span><h3>Institutional partnership</h3><p>Collaborate on enterprise development, training, research, or wider economic opportunity programmes.</p></article>
+        <div class="cards partnership-cards">
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">01</span><h3>Strategic business partnerships</h3>
+            <p>Combine capabilities, distribution, market access, technology, or specialist operating knowledge.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="strategic-business">Start a strategic enquiry <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">02</span><h3>Investment partnerships</h3>
+            <p>Explore structured funding opportunities linked to an identified venture and agreed development plan.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="investment">Discuss an investment <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">03</span><h3>Franchise partnerships</h3>
+            <p>Work with repeatable venture models intended for carefully managed geographic or service expansion.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="franchise">Explore a franchise <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">04</span><h3>Corporate collaboration</h3>
+            <p>Co-design initiatives, services, campaigns, or supply relationships that create mutual commercial value.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="corporate-collaboration">Propose a collaboration <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">05</span><h3>Technical partnership</h3>
+            <p>Bring specialist knowledge, systems, accreditation, or delivery capacity into a developing venture.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="technical">Offer technical capability <span aria-hidden="true">&rarr;</span></button>
+          </article>
+          <article class="card partnership-card" data-reveal>
+            <span class="card__number">06</span><h3>Institutional partnership</h3>
+            <p>Collaborate on enterprise development, training, research, or wider economic opportunity programmes.</p>
+            <button class="partnership-card__trigger" type="button" data-partnership-open="institutional">Start an institutional enquiry <span aria-hidden="true">&rarr;</span></button>
+          </article>
         </div>
+
+        <section class="partnership-enquiry" data-partnership-panel hidden aria-labelledby="partnership-form-title">
+          <div class="partnership-enquiry__intro">
+            <div>
+              <span class="eyebrow">Partnership enquiry</span>
+              <h2 id="partnership-form-title" tabindex="-1" data-partnership-title>Tell us about the opportunity.</h2>
+              <p data-partnership-description>Select a partnership path above to begin.</p>
+            </div>
+            <button class="partnership-enquiry__close" type="button" data-partnership-close aria-label="Close partnership enquiry">&times;</button>
+          </div>
+
+          <form class="partnership-form form-grid" data-partnership-form>
+            <input type="hidden" name="partnershipType" data-partnership-type>
+
+            <div class="field">
+              <label for="partnerFullName">Full name *</label>
+              <input id="partnerFullName" name="fullName" type="text" autocomplete="name" maxlength="120" required>
+            </div>
+            <div class="field">
+              <label for="partnerEmail">Work email *</label>
+              <input id="partnerEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+            </div>
+            <div class="field">
+              <label for="partnerPhone">Phone number</label>
+              <input id="partnerPhone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+            </div>
+            <div class="field">
+              <label for="partnerOrganization">Company or organization *</label>
+              <input id="partnerOrganization" name="organization" type="text" autocomplete="organization" maxlength="160" required>
+            </div>
+            <div class="field field--wide">
+              <label for="partnerRole">Your role *</label>
+              <input id="partnerRole" name="role" type="text" autocomplete="organization-title" maxlength="120" required>
+            </div>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="strategic-business" disabled hidden>
+              <legend>Strategic partnership details</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="strategicFocus">Primary area of partnership *</label>
+                  <select id="strategicFocus" name="strategicFocus" required>
+                    <option value="">Choose one</option><option value="market-access">Market access</option><option value="distribution">Distribution</option><option value="technology">Technology</option><option value="operations">Operational capability</option><option value="joint-venture">Joint venture</option><option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="targetMarket">Target market or territory *</label>
+                  <input id="targetMarket" name="targetMarket" type="text" maxlength="160" required>
+                </div>
+                <div class="field field--wide">
+                  <label for="strategicContribution">What would your organization contribute? *</label>
+                  <textarea id="strategicContribution" name="strategicContribution" maxlength="1200" required></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="investment" disabled hidden>
+              <legend>Investment profile</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="investorType">Investor type *</label>
+                  <select id="investorType" name="investorType" required>
+                    <option value="">Choose one</option><option value="individual">Individual investor</option><option value="company">Company</option><option value="fund">Investment fund</option><option value="family-office">Family office</option><option value="institution">Institution</option><option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="investmentRange">Indicative investment range *</label>
+                  <select id="investmentRange" name="investmentRange" required>
+                    <option value="">Choose one</option><option value="under-10000">Under US$10,000</option><option value="10000-50000">US$10,000-50,000</option><option value="50000-250000">US$50,000-250,000</option><option value="250000-plus">US$250,000+</option><option value="discuss">Prefer to discuss</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="sectorInterest">Venture area of interest *</label>
+                  <select id="sectorInterest" name="sectorInterest" required>
+                    <option value="">Choose one</option><option value="homecare">HomeCare</option><option value="laundry">Laundry Hall</option><option value="logistics">Procurement &amp; Logistics</option><option value="property">Property &amp; Real Estate</option><option value="scents">Magical Scents</option><option value="portfolio">Portfolio / multiple ventures</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="investmentHorizon">Expected investment horizon *</label>
+                  <select id="investmentHorizon" name="investmentHorizon" required>
+                    <option value="">Choose one</option><option value="under-1-year">Under 1 year</option><option value="1-3-years">1-3 years</option><option value="3-5-years">3-5 years</option><option value="5-plus-years">5+ years</option><option value="flexible">Flexible</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="franchise" disabled hidden>
+              <legend>Franchise interest</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="franchiseVenture">Venture of interest *</label>
+                  <select id="franchiseVenture" name="franchiseVenture" required>
+                    <option value="">Choose one</option><option value="homecare">HomeCare</option><option value="laundry">Laundry Hall</option><option value="logistics">Procurement &amp; Logistics</option><option value="scents">Magical Scents</option><option value="other">Other / future venture</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="preferredLocation">Preferred city or territory *</label>
+                  <input id="preferredLocation" name="preferredLocation" type="text" maxlength="160" required>
+                </div>
+                <div class="field">
+                  <label for="fundingReadiness">Funding readiness *</label>
+                  <select id="fundingReadiness" name="fundingReadiness" required>
+                    <option value="">Choose one</option><option value="ready">Capital available</option><option value="partially-ready">Partially secured</option><option value="seeking-finance">Seeking finance</option><option value="exploring">Exploring requirements</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="businessExperience">Relevant operating experience *</label>
+                  <textarea id="businessExperience" name="businessExperience" maxlength="1200" required></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="corporate-collaboration" disabled hidden>
+              <legend>Corporate collaboration details</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="collaborationFocus">Collaboration area *</label>
+                  <select id="collaborationFocus" name="collaborationFocus" required>
+                    <option value="">Choose one</option><option value="service-delivery">Service delivery</option><option value="supply">Supply or procurement</option><option value="campaign">Campaign or co-branding</option><option value="employee-benefits">Employee benefits</option><option value="csr">CSR or community programme</option><option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="targetTimeline">Preferred start period *</label>
+                  <input id="targetTimeline" name="targetTimeline" type="text" maxlength="120" placeholder="For example, Q1 2027" required>
+                </div>
+                <div class="field field--wide">
+                  <label for="projectScope">Outline the proposed project or commercial opportunity *</label>
+                  <textarea id="projectScope" name="projectScope" maxlength="1600" required></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="technical" disabled hidden>
+              <legend>Technical capability</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="expertiseArea">Primary expertise *</label>
+                  <select id="expertiseArea" name="expertiseArea" required>
+                    <option value="">Choose one</option><option value="technology">Technology &amp; systems</option><option value="operations">Operations</option><option value="training">Training &amp; certification</option><option value="compliance">Legal, compliance or accreditation</option><option value="engineering">Engineering or infrastructure</option><option value="specialist-advisory">Specialist advisory</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="deliveryCapacity">Delivery capacity *</label>
+                  <input id="deliveryCapacity" name="deliveryCapacity" type="text" maxlength="240" placeholder="Team size, availability or service coverage" required>
+                </div>
+                <div class="field field--wide">
+                  <label for="credentials">Relevant credentials and experience *</label>
+                  <textarea id="credentials" name="credentials" maxlength="1600" required></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="partnership-fields field--wide" data-partnership-fields="institutional" disabled hidden>
+              <legend>Institutional partnership details</legend>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="institutionType">Institution type *</label>
+                  <select id="institutionType" name="institutionType" required>
+                    <option value="">Choose one</option><option value="government">Government or public body</option><option value="ngo">NGO or development organization</option><option value="education">Education or research institution</option><option value="finance">Financial institution</option><option value="trade-body">Trade or professional body</option><option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="programmeFocus">Programme focus *</label>
+                  <select id="programmeFocus" name="programmeFocus" required>
+                    <option value="">Choose one</option><option value="enterprise-development">Enterprise development</option><option value="training">Training and skills</option><option value="research">Research</option><option value="employment">Employment creation</option><option value="market-development">Market development</option><option value="other">Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="geographicScope">Geographic scope *</label>
+                  <input id="geographicScope" name="geographicScope" type="text" maxlength="160" required>
+                </div>
+                <div class="field">
+                  <label for="programmeStage">Current programme stage *</label>
+                  <select id="programmeStage" name="programmeStage" required>
+                    <option value="">Choose one</option><option value="concept">Concept</option><option value="planning">Planning</option><option value="funded">Funded / pre-delivery</option><option value="active">Active programme</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="field field--wide">
+              <label for="partnershipMessage">Objectives and expected outcomes *</label>
+              <textarea id="partnershipMessage" name="message" minlength="20" maxlength="3000" required></textarea>
+            </div>
+            <div class="honeypot" aria-hidden="true">
+              <label for="partnerWebsite">Website</label>
+              <input id="partnerWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="checkbox field--wide">
+              <input name="consent" type="checkbox" required>
+              <span>I agree that D'Magical Touch Empire may use this information to assess and respond to this partnership enquiry. See the <a href="privacy.html"><u>privacy notice</u></a>. *</span>
+            </label>
+            <p class="form-status" data-partnership-status role="status" tabindex="-1" hidden></p>
+            <div class="field--wide">
+              <button class="button" type="submit">Send partnership enquiry <span aria-hidden="true">&rarr;</span></button>
+            </div>
+          </form>
+        </section>
       </div>
     </section>
 

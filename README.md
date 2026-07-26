@@ -13,7 +13,12 @@ The static pages work locally. Vercel Functions are available after deployment o
 
 ## Database
 
-Create a Neon project and execute `database/001_initial.sql` in the Neon SQL editor.
+Create a Neon project and execute every SQL migration in filename order in the Neon SQL editor:
+
+1. `database/001_initial.sql`
+2. `database/002_partnership_enquiries.sql`
+
+The contact form writes to `contact_messages`. The six tailored partnership forms write to `partnership_enquiries`. Both flows store the submission before attempting email delivery, so a temporary Resend failure does not lose the enquiry.
 
 ## Vercel environment variables
 
