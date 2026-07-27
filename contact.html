@@ -1,53 +1,282 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact D'Magical Touch Empire about services, ventures, partnership, investment, or media enquiries.">
-  <meta name="theme-color" content="#071a33">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <title>Contact Us | D'Magical Touch Empire</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact D'Magical Touch Empire about services, ventures, partnership, investment, or media enquiries.">
+    <meta name="theme-color" content="#0A1A3F">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Contact Us - D'Magical Touch Empire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header data-site-header></header>
-  <main id="main-content">
-    <section class="page-hero">
-      <img class="page-hero__media" src="image/optimized/nastuh-abootalebi-yWwob8kwOCk-unsplash.webp" alt="">
-      <div class="shell page-hero__content"><span class="eyebrow">Contact</span><h1>Let’s make the conversation useful.</h1><p>Tell us what you are working on, what kind of support you need, and what a good outcome would look like.</p></div>
-    </section>
-    <section class="section">
-      <div class="shell contact-layout">
-        <aside class="contact-details" data-reveal>
-          <span class="eyebrow">Direct contact</span>
-          <h2>Prefer to reach us another way?</h2>
-          <p>Our team is based in Freetown and responds during regular business hours.</p>
-          <div class="contact-method"><small>Phone & WhatsApp</small><a href="tel:+23276431194">+232 76 431 194</a></div>
-          <div class="contact-method"><small>Email</small><a href="mailto:info@dmagicaltouchempire.com">info@dmagicaltouchempire.com</a></div>
-          <div class="contact-method"><small>Location</small><span>Cape Road, Aberdeen<br>Freetown, Sierra Leone</span></div>
-          <div class="contact-method"><small>Business hours</small><span>Monday–Friday, 8:00–17:00<br>Saturday, 9:00–14:00</span></div>
-          <a class="button" href="https://wa.me/23276431194" target="_blank" rel="noopener noreferrer">Open WhatsApp <span aria-hidden="true">↗</span></a>
-        </aside>
-        <div data-reveal>
-          <span class="eyebrow">Enquiry form</span>
-          <h2>How can we help?</h2>
-          <p>Fields marked with an asterisk are required.</p>
-          <form class="contact-form form-grid" data-contact-form>
-            <div class="field field--wide"><label for="enquiryType">Type of enquiry *</label><select id="enquiryType" name="enquiryType" required><option value="">Choose one</option><option value="general-enquiry">General enquiry</option><option value="service-enquiry">Service enquiry</option><option value="partnership">Partnership</option><option value="investment">Investment opportunity</option><option value="venture-enquiry">Existing venture</option><option value="media-request">Media request</option></select></div>
-            <div class="field"><label for="fullName">Full name *</label><input id="fullName" name="fullName" type="text" autocomplete="name" maxlength="120" required></div>
-            <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
-            <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
-            <div class="field"><label for="company" data-company-label>Company or organization</label><input id="company" name="company" type="text" autocomplete="organization" maxlength="160"></div>
-            <div class="field field--wide"><label for="subject">Subject *</label><input id="subject" name="subject" type="text" maxlength="140" required></div>
-            <div class="field field--wide"><label for="message">Tell us about your enquiry *</label><textarea id="message" name="message" minlength="10" maxlength="3000" required></textarea></div>
-            <div class="honeypot" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-            <label class="checkbox field--wide"><input name="consent" type="checkbox" required><span>I agree that D’Magical Touch Empire may use this information to respond to my enquiry. See the <a href="privacy.html"><u>privacy notice</u></a>. *</span></label>
-            <p class="form-status" data-form-status role="status" tabindex="-1" hidden></p>
-            <div class="field--wide"><button class="button" type="submit">Send enquiry <span aria-hidden="true">→</span></button></div>
-          </form>
+    <header>
+        <div class="header-container">
+            <div class="header-info">
+                <div class="header-max1">
+
+                    <div class="call-info">
+                        <a href="mailto:dmagicaltouch001@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            dmagicaltouch001@gmail.com
+                        </a>
+
+                        <a href="tel:+23276431194">
+                            <i class="fas fa-phone"></i>
+                            +232 76 431 194
+                        </a>
+                    </div>
+
+                    <div class="icons">
+                        <a href="https://wa.me/23276431194" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+
+                        <a href="#" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="https://www.instagram.com/dmagicaltouchempire/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="https://twitter.com/dmagicaltouch01" target="_blank">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Main Navbar -->
+            <div class="logo-details">
+
+                <div class="logo">
+                    <h1>D'Magical Touch Empire</h1>
+                </div>
+
+                <nav class="nav" id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="ventures.html">Ventures</a></li>
+                        <li><a href="partnership.html">Partnership</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <div class="donate-btn">
+                    <button type="button" data-contact-route>
+                        Contact Us
+                    </button>
+                </div>
+
+                <div class="menu-toggle" id="menu-toggle">
+                    ☰
+                </div>
+
+            </div>
+
         </div>
-      </div>
+    </header>
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>
+                Let's discuss your business goals, partnership opportunities,
+                investment interests, and venture development needs.
+            </p>
+        </div>
     </section>
-  </main>
-  <footer class="footer" data-site-footer></footer>
-  <script type="module" src="/src/main.ts"></script>
+    <section class="contact-intro">
+        <div class="container">
+            <div class="section-heading">
+                <span class="service1-tag">
+                    Get In Touch
+                </span>
+                <h2>
+                    We're Ready To Hear From You
+                </h2>
+                <p>
+                    Whether you're interested in our services or exploring
+                    partnership opportunities, our team is ready to assist.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="contact-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <h3>Phone</h3>
+                    <p>+232 76 431 194</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <h3>Email</h3>
+                    <p>info@dmagicaltouchempire.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Location</h3>
+                    <p>
+                        Cape Road, Aberdeen, Freetown, Sierra Leone
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="form-content">
+                    <h2>
+                        Send Us A Message
+                    </h2>
+                </div>
+                <form data-contact-form>
+                    <div class="legacy-field legacy-field--wide">
+                        <label for="enquiryType">Type of enquiry *</label>
+                        <select id="enquiryType" name="enquiryType" required>
+                            <option value="">Choose one</option>
+                            <option value="general-enquiry">General enquiry</option>
+                            <option value="service-enquiry">Service enquiry</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="investment">Investment opportunity</option>
+                            <option value="venture-enquiry">Existing venture</option>
+                            <option value="media-request">Media request</option>
+                        </select>
+                    </div>
+                    <div class="legacy-field">
+                        <label for="fullName">Full name *</label>
+                        <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Full Name" maxlength="120" required>
+                    </div>
+                    <div class="legacy-field">
+                        <label for="email">Email address *</label>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="Email Address" maxlength="254" required>
+                    </div>
+                    <div class="legacy-field">
+                        <label for="phone">Phone number</label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone Number" maxlength="30">
+                    </div>
+                    <div class="legacy-field">
+                        <label for="company" data-company-label>Company or organization</label>
+                        <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company Name" maxlength="160">
+                    </div>
+                    <div class="legacy-field legacy-field--wide">
+                        <label for="subject">Subject *</label>
+                        <input id="subject" name="subject" type="text" placeholder="Subject" maxlength="140" required>
+                    </div>
+                    <div class="legacy-field legacy-field--wide">
+                        <label for="message">Your message *</label>
+                        <textarea id="message" name="message" placeholder="Your Message" minlength="10" maxlength="3000" required></textarea>
+                    </div>
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <label class="legacy-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I agree that D'Magical Touch Empire may use this information to respond to my enquiry. See the <a href="privacy.html">privacy notice</a>. *</span>
+                    </label>
+                    <p class="form-status" data-form-status role="status" tabindex="-1" hidden></p>
+                    <button type="submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="office-location">
+        <div class="container">
+            <div class="section-heading">
+                <h2>
+                    Visit Our Office
+                </h2>
+            </div>
+            <div class="map-box">
+                Google Map Here
+            </div>
+        </div>
+    </section> -->
+    <section class="business-hours">
+        <div class="container">
+            <h2>Business Hours</h2>
+            <div class="hours-grid">
+                <div>
+                    <h3>Monday - Friday</h3>
+                    <p>8:00 AM - 5:00 PM</p>
+                </div>
+                <div>
+                    <h3>Saturday</h3>
+                    <p>9:00 AM - 2:00 PM</p>
+                </div>
+                <div>
+                    <h3>Sunday</h3>
+                    <p>Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>D'Magical Touch Empire</h2>
+                <p>
+                    Dedicated to innovation, business development, strategic partnerships, and impactful ventures that inspire growth and success.
+                </p>
+            </div>
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="ventures.html">Ventures</a></li>
+                    <li><a href="partnership.html">Partnership</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>Contact Info</h3>
+                <p>Email: dmagicaltouch001@gmail.com</p>
+                <p>Phone: +232 76 431 194</p>
+                <p>Location: Cape Road, Aberdeen, Freetown, Sierra Leone</p>
+            </div>
+            <div class="footer-box">
+                <h3>Follow Us</h3>
+                <div class="footer-socials">
+
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/dmagicaltouchempire/" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="https://wa.me/23276431194" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <a href="https://twitter.com/dmagicaltouch01" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                © 2026 D'Magical Touch Empire. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

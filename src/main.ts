@@ -96,25 +96,47 @@ document.querySelectorAll<HTMLElement>("[data-year]").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
 });
 
-const menuButton = document.querySelector<HTMLButtonElement>(".menu-button");
-const navigation = document.querySelector<HTMLElement>(".nav-links");
+const menuButton = document.querySelector<HTMLElement>(".menu-button, #menu-toggle");
+const navigation = document.querySelector<HTMLElement>(".nav-links, .nav");
+
+if (menuButton && navigation) {
+  menuButton.setAttribute("role", "button");
+  menuButton.setAttribute("tabindex", "0");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-controls", navigation.id || "nav");
+  menuButton.setAttribute("aria-label", "Open navigation");
+}
 
 function closeMenu(): void {
   menuButton?.setAttribute("aria-expanded", "false");
   menuButton?.setAttribute("aria-label", "Open navigation");
   navigation?.classList.remove("is-open");
+  navigation?.classList.remove("active");
   document.body.classList.remove("menu-is-open");
 }
 
-menuButton?.addEventListener("click", () => {
+menuButton?.addEventListener("click", (event) => {
+  event.stopPropagation();
   const opening = menuButton.getAttribute("aria-expanded") !== "true";
   menuButton.setAttribute("aria-expanded", String(opening));
   menuButton.setAttribute("aria-label", opening ? "Close navigation" : "Open navigation");
   navigation?.classList.toggle("is-open", opening);
+  navigation?.classList.toggle("active", opening);
   document.body.classList.toggle("menu-is-open", opening);
 });
 
+menuButton?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  menuButton.click();
+});
+
 navigation?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+document.addEventListener("click", (event) => {
+  if (menuButton?.getAttribute("aria-expanded") !== "true") return;
+  const target = event.target;
+  if (target instanceof Node && !navigation?.contains(target) && !menuButton.contains(target)) closeMenu();
+});
 window.addEventListener("resize", () => {
   if (window.innerWidth > 960) closeMenu();
 });
@@ -137,13 +159,29 @@ if (!reducedMotion && "IntersectionObserver" in window) {
   document.querySelectorAll("[data-reveal]").forEach((element) => element.classList.add("is-visible"));
 }
 
-document.querySelectorAll<HTMLDetailsElement>(".faq-list details").forEach((item) => {
+document.querySelectorAll<HTMLDetailsElement>(".faq-list details, .faq-wrapper details").forEach((item) => {
   item.addEventListener("toggle", () => {
     if (!item.open) return;
-    document.querySelectorAll<HTMLDetailsElement>(".faq-list details").forEach((other) => {
+    document.querySelectorAll<HTMLDetailsElement>(".faq-list details, .faq-wrapper details").forEach((other) => {
       if (other !== item) other.open = false;
     });
   });
+});
+
+document.querySelectorAll<HTMLAnchorElement>('a[target="_blank"]').forEach((link) => {
+  link.rel = "noopener noreferrer";
+});
+
+document.querySelectorAll<HTMLAnchorElement>('a[href="tel:+23232746064"]').forEach((link) => {
+  link.href = "tel:+23276431194";
+});
+
+document.querySelectorAll<HTMLButtonElement>("[data-contact-route], .donate-btn button").forEach((button) => {
+  button.addEventListener("click", () => window.location.assign("contact.html"));
+});
+
+document.querySelectorAll<HTMLAnchorElement>(".nav a").forEach((link) => {
+  if (link.getAttribute("href") === currentFile) link.setAttribute("aria-current", "page");
 });
 
 interface ApiResponse {
@@ -264,7 +302,7 @@ function openPartnershipForm(type: PartnershipType): void {
 
   partnershipButtons.forEach((button) => {
     const selected = button.dataset.partnershipOpen === type;
-    button.closest(".partnership-card")?.classList.toggle("is-selected", selected);
+    button.closest(".partnership-card, .opportunity-card")?.classList.toggle("is-selected", selected);
     if (selected) activePartnershipButton = button;
   });
 
@@ -289,7 +327,7 @@ partnershipButtons.forEach((button) => {
 document.querySelector<HTMLButtonElement>("[data-partnership-close]")?.addEventListener("click", () => {
   if (!partnershipPanel) return;
   partnershipPanel.hidden = true;
-  partnershipButtons.forEach((button) => button.closest(".partnership-card")?.classList.remove("is-selected"));
+  partnershipButtons.forEach((button) => button.closest(".partnership-card, .opportunity-card")?.classList.remove("is-selected"));
   activePartnershipButton?.focus();
 });
 
