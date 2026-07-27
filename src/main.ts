@@ -80,8 +80,8 @@ if (footer) {
       <div>
         <h2>Follow</h2>
         <div class="footer__links">
-          <a href="https://www.instagram.com/dmagicaltouchempire/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-          <a href="https://twitter.com/dmagicaltouch01" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
+          <a href="https://www.instagram.com/dmagicaltouchempire?igsh=czBleXdqZW02b2Jw" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://x.com/dmagicaltouch01" target="_blank" rel="noopener noreferrer">X / Twitter ↗</a>
           <a href="https://wa.me/23276431194" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
         </div>
       </div>
