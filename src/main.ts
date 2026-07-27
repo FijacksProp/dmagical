@@ -100,6 +100,7 @@ const menuButton = document.querySelector<HTMLElement>(".menu-button, #menu-togg
 const navigation = document.querySelector<HTMLElement>(".nav-links, .nav");
 
 if (menuButton && navigation) {
+  menuButton.innerHTML = '<span class="menu-toggle__line" aria-hidden="true"></span>';
   menuButton.setAttribute("role", "button");
   menuButton.setAttribute("tabindex", "0");
   menuButton.setAttribute("aria-expanded", "false");
