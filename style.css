@@ -993,9 +993,9 @@ header{
 .about-hero{
     width: 100%;
     min-height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.3)),
-        url("image/ChatGPT\ Image\ May\ 20\,\ 2026\,\ 12_41_28\ PM.png");
-    background-position: bottom;
+    background: linear-gradient(rgba(7, 12, 20, 0.48), rgba(7, 12, 20, 0.48)),
+        url("image/founder-portrait-enhanced.png");
+    background-position: center 38%;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
