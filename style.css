@@ -1568,6 +1568,11 @@ textarea{
     background:#0d1b2a;
 }
 
+.about-image--founder img{
+    object-fit:cover;
+    object-position:center 38%;
+}
+
 .legacy-field{
     display:flex;
     flex-direction:column;
